@@ -7,10 +7,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -28,6 +25,12 @@ public class FruitController {
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(fruitResponse);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<FruitResponseDTO> getFruitById(@PathVariable Long id) {
+        FruitResponseDTO response = service.getById(id);
+        return ResponseEntity.ok(response);
     }
 
 }
