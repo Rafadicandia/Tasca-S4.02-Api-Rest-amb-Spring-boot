@@ -95,4 +95,16 @@ class FruitControllerTest {
                 .andExpect(jsonPath("$.weightInKilos").value(10));
     }
 
+    @Test
+    void shouldDeleteFruitWhenIdExists() throws Exception {
+        Long id = 1L;
+
+        doNothing().when(fruitService).delete(id);
+
+        mockMvc.perform(delete("/fruits/{id}", id))
+                .andExpect(status().isNoContent());
+
+        verify(fruitService, times(1)).delete(id);
+    }
+
 }
