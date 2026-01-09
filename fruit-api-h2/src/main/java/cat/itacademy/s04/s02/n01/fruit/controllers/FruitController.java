@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/fruits")
@@ -31,6 +33,21 @@ public class FruitController {
     public ResponseEntity<FruitResponseDTO> getFruitById(@PathVariable Long id) {
         FruitResponseDTO response = service.getById(id);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<FruitResponseDTO>> getAllFruits() {
+        List<FruitResponseDTO> fruits = service.getAll();
+        return ResponseEntity.ok(fruits);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<FruitResponseDTO> updateFruit(
+            @PathVariable Long id,
+            @Valid @RequestBody FruitDTO fruitRequest) {
+
+        FruitResponseDTO updated = service.update(id, fruitRequest);
+        return ResponseEntity.ok(updated);
     }
 
 }
