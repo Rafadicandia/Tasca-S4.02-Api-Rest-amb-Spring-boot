@@ -1,6 +1,5 @@
 package cat.itacademy.s04.s02.n01.fruit.controllers;
 
-import cat.itacademy.s04.s02.n01.fruit.model.Fruit;
 import cat.itacademy.s04.s02.n01.fruit.model.FruitDTO;
 import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
 import cat.itacademy.s04.s02.n01.fruit.services.FruitService;

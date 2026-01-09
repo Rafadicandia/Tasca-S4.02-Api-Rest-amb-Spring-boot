@@ -1,4 +1,5 @@
 package cat.itacademy.s04.s02.n01.fruit.model;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
