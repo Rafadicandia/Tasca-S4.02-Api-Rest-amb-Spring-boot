@@ -5,4 +5,6 @@ import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
 
 public interface FruitService {
     public FruitResponseDTO save(FruitDTO userRequestNewFruit);
+
+    public FruitResponseDTO getById(Long fruitId);
 }
