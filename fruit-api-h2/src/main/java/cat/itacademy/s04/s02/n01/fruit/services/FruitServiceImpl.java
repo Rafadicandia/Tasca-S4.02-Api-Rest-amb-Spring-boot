@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.List;
+
 @Validated
 @AllArgsConstructor
 @Service
@@ -38,6 +40,33 @@ public class FruitServiceImpl implements FruitService {
                         fruit.getName(),
                         fruit.getWeightInKilos()
                 ))
-                .orElseThrow(()->new RuntimeException("Fruit not found with id: "+fruitId));
+                .orElseThrow(() -> new RuntimeException("Fruit not found with id: " + fruitId));
+    }
+
+    @Override
+    public List<FruitResponseDTO> getAll() {
+        List<FruitResponseDTO> allFruits = repository.findAll()
+                .stream().map(fruit -> new FruitResponseDTO(
+                        fruit.getId(),
+                        fruit.getName(),
+                        fruit.getWeightInKilos()
+                ))
+                .toList();
+        return allFruits;
+    }
+
+    @Override
+    public FruitResponseDTO update(Long id, FruitDTO userRequestUpdateFruit) {
+        Fruit fruitToUpdate = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Fruit not found with id: " + id));
+        fruitToUpdate.setWeightInKilos(userRequestUpdateFruit.weightInKilos());
+        fruitToUpdate.setName(userRequestUpdateFruit.name());
+
+        Fruit updatedFruit = repository.save(fruitToUpdate);
+        return new FruitResponseDTO(
+                updatedFruit.getId(),
+                updatedFruit.getName(),
+                updatedFruit.getWeightInKilos()
+        );
     }
 }
