@@ -1,5 +1,6 @@
 package cat.itacademy.s04.s02.n01.fruit.controllers;
 import cat.itacademy.s04.s02.n01.fruit.model.FruitDTO;
+import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
 import cat.itacademy.s04.s02.n01.fruit.services.FruitService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -30,7 +31,8 @@ class FruitControllerTest {
     void shouldCreateFruit() throws Exception {
 
         FruitDTO inputDto = new FruitDTO("Banana", 5);
-        when(fruitService.save(any(FruitDTO.class))).thenReturn(inputDto);
+        FruitResponseDTO ResponseDto = new FruitResponseDTO(78L, "Banana", 5);
+        when(fruitService.save(any(FruitDTO.class))).thenReturn(ResponseDto);
 
         String fruitJson = objectMapper.writeValueAsString(inputDto);
 
