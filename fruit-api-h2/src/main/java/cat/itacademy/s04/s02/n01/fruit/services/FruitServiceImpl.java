@@ -1,5 +1,6 @@
 package cat.itacademy.s04.s02.n01.fruit.services;
 
+import cat.itacademy.s04.s02.n01.fruit.exception.FruitNotFoundException;
 import cat.itacademy.s04.s02.n01.fruit.model.Fruit;
 import cat.itacademy.s04.s02.n01.fruit.model.FruitDTO;
 import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
@@ -40,7 +41,7 @@ public class FruitServiceImpl implements FruitService {
                         fruit.getName(),
                         fruit.getWeightInKilos()
                 ))
-                .orElseThrow(() -> new RuntimeException("Fruit not found with id: " + fruitId));
+                .orElseThrow(() -> new FruitNotFoundException(fruitId));
     }
 
     @Override
@@ -68,5 +69,14 @@ public class FruitServiceImpl implements FruitService {
                 updatedFruit.getName(),
                 updatedFruit.getWeightInKilos()
         );
+    }
+
+    @Override
+    public void delete(Long id) {
+        if (!repository.existsById(id)) {
+            throw new FruitNotFoundException(id);
+        }
+        repository.deleteById(id);
+
     }
 }
