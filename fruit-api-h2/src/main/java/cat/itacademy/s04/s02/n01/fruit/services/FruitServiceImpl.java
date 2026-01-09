@@ -29,4 +29,15 @@ public class FruitServiceImpl implements FruitService {
                 newFruit.getWeightInKilos()
         );
     }
+
+    @Override
+    public FruitResponseDTO getById(Long fruitId) {
+        return repository.findById(fruitId)
+                .map(fruit -> new FruitResponseDTO(
+                        fruit.getId(),
+                        fruit.getName(),
+                        fruit.getWeightInKilos()
+                ))
+                .orElseThrow(()->new RuntimeException("Fruit not found with id: "+fruitId));
+    }
 }
