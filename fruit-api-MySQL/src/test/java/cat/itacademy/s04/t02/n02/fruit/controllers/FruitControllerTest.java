@@ -1,8 +1,9 @@
-package cat.itacademy.s04.s02.n01.fruit.controllers;
+package cat.itacademy.s04.t02.n02.fruit.controllers;
 
 import cat.itacademy.s04.s02.n01.fruit.model.FruitDTO;
 import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
 import cat.itacademy.s04.s02.n01.fruit.services.FruitService;
+import cat.itacademy.s04.t02.n02.fruit.fruit.controllers.FruitController;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
