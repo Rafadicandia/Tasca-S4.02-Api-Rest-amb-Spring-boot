@@ -1,16 +1,14 @@
-package cat.itacademy.s04.s02.n01.fruit.model;
+package cat.itacademy.s04.t02.n02.fruit.fruit.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import cat.itacademy.s04.t02.n02.fruit.provider.model.Provider;
+import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
+@Table(name="fruits")
 public class Fruit {
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
@@ -18,6 +16,10 @@ public class Fruit {
 
     private String name;
     private int weightInKilos;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="provider_id", nullable = false)
+    private Provider provider;
 
 
 }
