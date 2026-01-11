@@ -2,6 +2,8 @@ package cat.itacademy.s04.t02.n02.fruit.exception;
 
 
 import cat.itacademy.s04.t02.n02.fruit.fruit.exception.FruitNotFoundException;
+import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderAlreadyExistsException;
+import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderHasFruitsException;
 import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNameDuplicatedException;
 import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -27,8 +29,18 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ProviderNotFoundException.class)
-    public ResponseEntity<String> handleNotFoundProvider(ProviderNotFoundException exception){
+    public ResponseEntity<String> handleNotFound(ProviderNotFoundException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(ProviderHasFruitsException.class)
+    public ResponseEntity<String> handleNotFound(ProviderHasFruitsException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(ProviderAlreadyExistsException.class)
+    public ResponseEntity<String> handleBadRequest(ProviderAlreadyExistsException exception){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
 
