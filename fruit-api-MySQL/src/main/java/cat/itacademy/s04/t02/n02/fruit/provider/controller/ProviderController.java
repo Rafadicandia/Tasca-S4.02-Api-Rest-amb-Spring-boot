@@ -1,5 +1,7 @@
 package cat.itacademy.s04.t02.n02.fruit.provider.controller;
 
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
+import cat.itacademy.s04.t02.n02.fruit.fruit.services.FruitService;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderDTO;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderResponseDTO;
 import cat.itacademy.s04.t02.n02.fruit.provider.service.ProviderService;
@@ -7,10 +9,9 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -18,10 +19,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProviderController {
 
     private final ProviderService service;
+    private final FruitService fruitService;
 
     @PostMapping
     public ResponseEntity<ProviderResponseDTO> create(@Valid @RequestBody ProviderDTO providerDTO) {
         ProviderResponseDTO response = service.create(providerDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}/fruits")
+    public ResponseEntity<List<FruitResponseDTO>> getFruitsByProvider(@PathVariable Long id) {
+        List<FruitResponseDTO> fruits = service.getFruitsByProvider(id);
+        return ResponseEntity.ok(fruits);
     }
 }
