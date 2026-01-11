@@ -1,10 +1,12 @@
-package cat.itacademy.s04.s02.n01.fruit.services;
+package cat.itacademy.s04.t02.n02.fruit.fruit.services;
 
 import cat.itacademy.s04.s02.n01.fruit.exception.FruitNotFoundException;
-import cat.itacademy.s04.s02.n01.fruit.model.Fruit;
-import cat.itacademy.s04.s02.n01.fruit.model.FruitDTO;
-import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
-import cat.itacademy.s04.s02.n01.fruit.repository.FruitRepository;
+
+
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.Fruit;
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitDTO;
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
+import cat.itacademy.s04.t02.n02.fruit.fruit.repository.FruitRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;

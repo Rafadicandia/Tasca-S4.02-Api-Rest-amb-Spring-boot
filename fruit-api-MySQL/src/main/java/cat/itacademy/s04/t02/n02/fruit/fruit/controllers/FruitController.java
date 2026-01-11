@@ -1,8 +1,10 @@
 package cat.itacademy.s04.t02.n02.fruit.fruit.controllers;
 
-import cat.itacademy.s04.s02.n01.fruit.model.FruitDTO;
-import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
-import cat.itacademy.s04.s02.n01.fruit.services.FruitService;
+
+
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitDTO;
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
+import cat.itacademy.s04.t02.n02.fruit.fruit.services.FruitService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

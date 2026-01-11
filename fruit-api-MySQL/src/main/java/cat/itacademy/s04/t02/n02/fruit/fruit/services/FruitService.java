@@ -1,7 +1,7 @@
-package cat.itacademy.s04.s02.n01.fruit.services;
+package cat.itacademy.s04.t02.n02.fruit.fruit.services;
 import java.util.List;
-import cat.itacademy.s04.s02.n01.fruit.model.FruitDTO;
-import cat.itacademy.s04.s02.n01.fruit.model.FruitResponseDTO;
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitDTO;
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
 
 public interface FruitService {
     public FruitResponseDTO save(FruitDTO userRequestNewFruit);
