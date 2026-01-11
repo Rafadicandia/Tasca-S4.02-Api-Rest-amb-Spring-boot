@@ -1,0 +1,7 @@
+package cat.itacademy.s04.t02.n02.fruit.provider.exception;
+
+public class ProviderAlreadyExistsException extends RuntimeException {
+    public ProviderAlreadyExistsException(String message) {
+        super(message);
+    }
+}
