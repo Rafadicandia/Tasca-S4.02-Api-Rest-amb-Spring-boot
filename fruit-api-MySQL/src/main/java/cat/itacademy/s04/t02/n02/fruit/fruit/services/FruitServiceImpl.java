@@ -1,16 +1,19 @@
 package cat.itacademy.s04.t02.n02.fruit.fruit.services;
 
-import cat.itacademy.s04.t02.n02.fruit.exception.FruitNotFoundException;
+import cat.itacademy.s04.t02.n02.fruit.fruit.exception.FruitNotFoundException;
 
 
 import cat.itacademy.s04.t02.n02.fruit.fruit.model.Fruit;
 import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitDTO;
 import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
 import cat.itacademy.s04.t02.n02.fruit.fruit.repository.FruitRepository;
+import cat.itacademy.s04.t02.n02.fruit.provider.model.Provider;
+import cat.itacademy.s04.t02.n02.fruit.provider.repository.ProviderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.nio.file.ProviderNotFoundException;
 import java.util.List;
 
 @Validated
@@ -19,12 +22,17 @@ import java.util.List;
 public class FruitServiceImpl implements FruitService {
 
     private final FruitRepository repository;
+    private final ProviderRepository providerRepository;
 
     @Override
     public FruitResponseDTO save(FruitDTO userRequestNewFruit) {
+        Provider provider = providerRepository.findById(userRequestNewFruit.providerId())
+                .orElseThrow(()-> new ProviderNotFoundException("Provider not found with id: "+userRequestNewFruit.providerId()));
+
         Fruit fruitEntity = new Fruit();
         fruitEntity.setName(userRequestNewFruit.name());
         fruitEntity.setWeightInKilos(userRequestNewFruit.weightInKilos());
+        fruitEntity.setProvider(provider);
 
         Fruit newFruit = repository.save(fruitEntity);
 
