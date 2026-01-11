@@ -1,6 +1,7 @@
 package cat.itacademy.s04.t02.n02.fruit.provider.controller;
 
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderDTO;
+import cat.itacademy.s04.t02.n02.fruit.provider.service.ProviderService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;

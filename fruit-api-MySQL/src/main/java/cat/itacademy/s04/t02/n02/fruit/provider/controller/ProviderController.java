@@ -2,6 +2,7 @@ package cat.itacademy.s04.t02.n02.fruit.provider.controller;
 
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderDTO;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderResponseDTO;
+import cat.itacademy.s04.t02.n02.fruit.provider.service.ProviderService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
