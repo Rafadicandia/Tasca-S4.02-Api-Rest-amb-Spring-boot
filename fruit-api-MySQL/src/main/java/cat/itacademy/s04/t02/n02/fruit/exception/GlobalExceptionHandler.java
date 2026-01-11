@@ -1,4 +1,4 @@
-package cat.itacademy.s04.s02.n01.fruit.exception;
+package cat.itacademy.s04.t02.n02.fruit.exception;
 
 
 import org.springframework.http.HttpStatus;
