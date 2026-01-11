@@ -4,6 +4,7 @@ import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
 import cat.itacademy.s04.t02.n02.fruit.fruit.repository.FruitRepository;
 import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderAlreadyExistsException;
 import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderHasFruitsException;
+import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNameCantBeEmpty;
 import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNameDuplicatedException;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.Provider;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderDTO;
@@ -60,13 +61,13 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     @Override
-    public ProviderResponseDTO update(Long id, ProviderDTO dto) throws BadRequestException {
+    public ProviderResponseDTO update(Long id, ProviderDTO dto) {
 
         Provider provider = repository.findById(id)
                 .orElseThrow(() -> new ProviderNotFoundException("Provider not found with id: " + id));
 
         if (dto.name() == null || dto.name().isBlank()) {
-            throw new BadRequestException("Name cannot be empty");
+            throw new ProviderNameCantBeEmpty("Name cannot be empty");
         }
 
         if (repository.existsByNameAndIdNot(dto.name(), id)) {

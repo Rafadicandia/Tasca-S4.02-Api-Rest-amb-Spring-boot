@@ -10,6 +10,6 @@ import java.util.List;
 public interface ProviderService {
     public ProviderResponseDTO create(ProviderDTO providerDTO);
     public List<FruitResponseDTO> getFruitsByProvider(Long providerId);
-    public ProviderResponseDTO update(Long id, ProviderDTO dto) throws BadRequestException;
+    public ProviderResponseDTO update(Long id, ProviderDTO dto);
     public void delete(Long id);
 }
