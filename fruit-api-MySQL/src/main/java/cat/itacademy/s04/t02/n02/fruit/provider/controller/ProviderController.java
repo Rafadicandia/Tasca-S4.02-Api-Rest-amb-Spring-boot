@@ -27,7 +27,11 @@ public class ProviderController {
         ProviderResponseDTO response = service.create(providerDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
-
+    @GetMapping
+    public ResponseEntity<List<ProviderResponseDTO>> getAllProviders() {
+        List<ProviderResponseDTO> providers = service.getAll();
+        return ResponseEntity.ok(providers);
+    }
     @GetMapping("/{id}/fruits")
     public ResponseEntity<List<FruitResponseDTO>> getFruitsByProvider(@PathVariable Long id) {
         List<FruitResponseDTO> fruits = service.getFruitsByProvider(id);
