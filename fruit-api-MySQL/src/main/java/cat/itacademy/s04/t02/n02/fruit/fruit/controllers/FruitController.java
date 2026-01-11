@@ -43,6 +43,7 @@ public class FruitController {
         return ResponseEntity.ok(fruits);
     }
 
+
     @PutMapping("/{id}")
     public ResponseEntity<FruitResponseDTO> updateFruit(
             @PathVariable Long id,
@@ -57,5 +58,6 @@ public class FruitController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
 
 }

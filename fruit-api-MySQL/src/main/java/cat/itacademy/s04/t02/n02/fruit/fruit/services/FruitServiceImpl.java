@@ -8,6 +8,7 @@ import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitDTO;
 import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
 import cat.itacademy.s04.t02.n02.fruit.fruit.repository.FruitRepository;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.Provider;
+import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderResponseDTO;
 import cat.itacademy.s04.t02.n02.fruit.provider.repository.ProviderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 
 import java.nio.file.ProviderNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Validated
 @AllArgsConstructor
@@ -39,7 +41,8 @@ public class FruitServiceImpl implements FruitService {
         return new FruitResponseDTO(
                 newFruit.getId(),
                 newFruit.getName(),
-                newFruit.getWeightInKilos()
+                newFruit.getWeightInKilos(),
+                newFruit.getProvider()
         );
     }
 
@@ -49,7 +52,8 @@ public class FruitServiceImpl implements FruitService {
                 .map(fruit -> new FruitResponseDTO(
                         fruit.getId(),
                         fruit.getName(),
-                        fruit.getWeightInKilos()
+                        fruit.getWeightInKilos(),
+                        fruit.getProvider()
                 ))
                 .orElseThrow(() -> new FruitNotFoundException(fruitId));
     }
@@ -60,7 +64,8 @@ public class FruitServiceImpl implements FruitService {
                 .stream().map(fruit -> new FruitResponseDTO(
                         fruit.getId(),
                         fruit.getName(),
-                        fruit.getWeightInKilos()
+                        fruit.getWeightInKilos(),
+                        fruit.getProvider()
                 ))
                 .toList();
         return allFruits;
@@ -77,7 +82,8 @@ public class FruitServiceImpl implements FruitService {
         return new FruitResponseDTO(
                 updatedFruit.getId(),
                 updatedFruit.getName(),
-                updatedFruit.getWeightInKilos()
+                updatedFruit.getWeightInKilos(),
+                updatedFruit.getProvider()
         );
     }
 
@@ -89,4 +95,7 @@ public class FruitServiceImpl implements FruitService {
         repository.deleteById(id);
 
     }
+
+
+
 }

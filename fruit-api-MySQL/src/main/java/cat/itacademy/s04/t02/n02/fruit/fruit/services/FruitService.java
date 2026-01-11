@@ -13,4 +13,5 @@ public interface FruitService {
     public FruitResponseDTO update(Long id, FruitDTO userRequestUpdateFruit);
 
     void delete(Long id);
+
 }
