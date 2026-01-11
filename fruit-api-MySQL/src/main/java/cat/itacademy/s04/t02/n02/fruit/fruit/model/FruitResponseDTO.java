@@ -6,6 +6,6 @@ public record FruitResponseDTO(
         Long id,
         String name,
         int weightInKilos,
-        Provider provider) {
+        String providerName) {
 }
 
