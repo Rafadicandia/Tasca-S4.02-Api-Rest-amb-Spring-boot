@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
-import java.nio.file.ProviderNotFoundException;
+import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
