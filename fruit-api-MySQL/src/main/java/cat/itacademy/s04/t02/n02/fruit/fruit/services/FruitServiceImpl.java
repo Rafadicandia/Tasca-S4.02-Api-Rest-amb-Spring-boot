@@ -1,6 +1,6 @@
 package cat.itacademy.s04.t02.n02.fruit.fruit.services;
 
-import cat.itacademy.s04.s02.n01.fruit.exception.FruitNotFoundException;
+import cat.itacademy.s04.t02.n02.fruit.exception.FruitNotFoundException;
 
 
 import cat.itacademy.s04.t02.n02.fruit.fruit.model.Fruit;
