@@ -1,5 +1,6 @@
 package cat.itacademy.s04.t02.n02.fruit.provider.controller;
 
+import cat.itacademy.s04.t02.n02.fruit.provider.service.ProviderService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
