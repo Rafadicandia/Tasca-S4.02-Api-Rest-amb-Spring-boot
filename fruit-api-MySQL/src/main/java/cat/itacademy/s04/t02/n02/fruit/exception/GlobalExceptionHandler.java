@@ -2,10 +2,7 @@ package cat.itacademy.s04.t02.n02.fruit.exception;
 
 
 import cat.itacademy.s04.t02.n02.fruit.fruit.exception.FruitNotFoundException;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderAlreadyExistsException;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderHasFruitsException;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNameDuplicatedException;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNotFoundException;
+import cat.itacademy.s04.t02.n02.fruit.provider.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -25,7 +22,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProviderNameDuplicatedException.class)
     public ResponseEntity<String> handleBadRequest(ProviderNameDuplicatedException exception){
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 
     @ExceptionHandler(ProviderNotFoundException.class)
@@ -35,6 +32,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ProviderHasFruitsException.class)
     public ResponseEntity<String> handleNotFound(ProviderHasFruitsException exception){
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(ProviderNameCantBeEmpty.class)
+    public ResponseEntity<String> handleNotFound(ProviderNameCantBeEmpty exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
