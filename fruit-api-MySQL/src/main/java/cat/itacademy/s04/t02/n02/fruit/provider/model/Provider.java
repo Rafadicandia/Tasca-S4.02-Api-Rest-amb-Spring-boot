@@ -2,6 +2,7 @@ package cat.itacademy.s04.t02.n02.fruit.provider.model;
 
 
 import cat.itacademy.s04.t02.n02.fruit.fruit.model.Fruit;
+import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

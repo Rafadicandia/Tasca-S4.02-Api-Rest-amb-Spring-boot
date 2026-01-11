@@ -61,6 +61,19 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     @Override
+    public List<ProviderResponseDTO> getAll() {
+        List<ProviderResponseDTO> allProviders = repository.findAll()
+                .stream().map(provider -> new ProviderResponseDTO(
+                        provider.getId(),
+                        provider.getName(),
+                        provider.getCountry(),
+                        List.of()
+                ))
+                .toList();
+        return allProviders;
+    }
+
+    @Override
     public ProviderResponseDTO update(Long id, ProviderDTO dto) {
 
         Provider provider = repository.findById(id)

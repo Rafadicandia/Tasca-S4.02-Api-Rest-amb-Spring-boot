@@ -10,6 +10,7 @@ import java.util.List;
 public interface ProviderService {
     public ProviderResponseDTO create(ProviderDTO providerDTO);
     public List<FruitResponseDTO> getFruitsByProvider(Long providerId);
+    public List<ProviderResponseDTO> getAll();
     public ProviderResponseDTO update(Long id, ProviderDTO dto);
     public void delete(Long id);
 }
