@@ -1,4 +1,4 @@
-package cat.itacademy.s04.s02.n01.fruit.model;
+package cat.itacademy.s04.t02.n02.fruit.fruit.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
