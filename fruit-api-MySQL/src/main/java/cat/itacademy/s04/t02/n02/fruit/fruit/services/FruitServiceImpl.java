@@ -42,7 +42,7 @@ public class FruitServiceImpl implements FruitService {
                 newFruit.getId(),
                 newFruit.getName(),
                 newFruit.getWeightInKilos(),
-                newFruit.getProvider()
+                newFruit.getProvider().getName()
         );
     }
 
@@ -53,7 +53,7 @@ public class FruitServiceImpl implements FruitService {
                         fruit.getId(),
                         fruit.getName(),
                         fruit.getWeightInKilos(),
-                        fruit.getProvider()
+                        fruit.getProvider().getName()
                 ))
                 .orElseThrow(() -> new FruitNotFoundException(fruitId));
     }
@@ -65,7 +65,7 @@ public class FruitServiceImpl implements FruitService {
                         fruit.getId(),
                         fruit.getName(),
                         fruit.getWeightInKilos(),
-                        fruit.getProvider()
+                        fruit.getProvider().getName()
                 ))
                 .toList();
         return allFruits;
@@ -83,7 +83,7 @@ public class FruitServiceImpl implements FruitService {
                 updatedFruit.getId(),
                 updatedFruit.getName(),
                 updatedFruit.getWeightInKilos(),
-                updatedFruit.getProvider()
+                updatedFruit.getProvider().getName()
         );
     }
 
