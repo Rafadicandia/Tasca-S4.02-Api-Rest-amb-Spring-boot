@@ -1,5 +1,6 @@
 package cat.itacademy.s04.t02.n02.fruit.provider.service;
 
+import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNameDuplicatedException;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.Provider;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderDTO;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderResponseDTO;
@@ -17,7 +18,7 @@ public class ProviderServiceImpl implements ProviderService {
     @Override
     public ProviderResponseDTO create(ProviderDTO providerDTO) {
         if (repository.existsByName(providerDTO.name())){
-            throw new RuntimeException("Provider name already exist");
+            throw new ProviderNameDuplicatedException("Provider name already exist");
         }
 
         Provider provider = new Provider();
