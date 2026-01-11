@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProviderRepository extends JpaRepository<Provider, Long> {
     boolean existsByName(String name);
+    boolean existsByNameAndIdNot(String name, Long id);
 }
