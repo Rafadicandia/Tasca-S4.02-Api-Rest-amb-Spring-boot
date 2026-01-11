@@ -2,19 +2,15 @@ package cat.itacademy.s04.t02.n02.fruit.provider.service;
 
 import cat.itacademy.s04.t02.n02.fruit.fruit.model.FruitResponseDTO;
 import cat.itacademy.s04.t02.n02.fruit.fruit.repository.FruitRepository;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderAlreadyExistsException;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderHasFruitsException;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNameCantBeEmpty;
-import cat.itacademy.s04.t02.n02.fruit.provider.exception.ProviderNameDuplicatedException;
+import cat.itacademy.s04.t02.n02.fruit.provider.exception.*;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.Provider;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderDTO;
 import cat.itacademy.s04.t02.n02.fruit.provider.model.ProviderResponseDTO;
 import cat.itacademy.s04.t02.n02.fruit.provider.repository.ProviderRepository;
 import lombok.AllArgsConstructor;
-import org.apache.coyote.BadRequestException;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.ProviderNotFoundException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

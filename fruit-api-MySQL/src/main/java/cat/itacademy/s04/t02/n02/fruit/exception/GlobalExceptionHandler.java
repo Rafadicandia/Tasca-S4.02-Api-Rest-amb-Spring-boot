@@ -16,42 +16,40 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(FruitNotFoundException.class)
-    public ResponseEntity<String> handleNotFound(FruitNotFoundException exception) {
+    public ResponseEntity<String> handleFruitNotFound(FruitNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
+    }
+
+    @ExceptionHandler(ProviderNotFoundException.class)
+    public ResponseEntity<String> handleProviderNotFound(ProviderNotFoundException exception){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
     }
 
     @ExceptionHandler(ProviderNameDuplicatedException.class)
-    public ResponseEntity<String> handleBadRequest(ProviderNameDuplicatedException exception){
+    public ResponseEntity<String> handleProviderNameDuplicated(ProviderNameDuplicatedException exception){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 
-    @ExceptionHandler(ProviderNotFoundException.class)
-    public ResponseEntity<String> handleNotFound(ProviderNotFoundException exception){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception.getMessage());
-    }
-
     @ExceptionHandler(ProviderHasFruitsException.class)
-    public ResponseEntity<String> handleNotFound(ProviderHasFruitsException exception){
+    public ResponseEntity<String> handleProviderHasFruitsConflict(ProviderHasFruitsException exception){
         return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getMessage());
     }
 
     @ExceptionHandler(ProviderNameCantBeEmpty.class)
-    public ResponseEntity<String> handleNotFound(ProviderNameCantBeEmpty exception){
+    public ResponseEntity<String> handleProviderNameEmpty(ProviderNameCantBeEmpty exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
     @ExceptionHandler(ProviderAlreadyExistsException.class)
-    public ResponseEntity<String> handleBadRequest(ProviderAlreadyExistsException exception){
+    public ResponseEntity<String> handleProviderAlreadyExists(ProviderAlreadyExistsException exception){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
 
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+    public ResponseEntity<Map<String, String>> handleValidation(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
         ex.getBindingResult().getFieldErrors().forEach(error ->
                 errors.put(error.getField(), error.getDefaultMessage()));
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
 }
-

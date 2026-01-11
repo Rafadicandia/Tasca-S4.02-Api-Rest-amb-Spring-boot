@@ -53,6 +53,11 @@ docker compose up -d
 
 *The API will be reachable at `http://localhost:8080` and the Database at port `3308`.*
 
+📖 Documentación de la API (Swagger)
+Una vez que el contenedor esté corriendo, puedes acceder a la interfaz interactiva de Swagger para probar los endpoints:
+
+🔗 http://localhost:8080/swagger-ui/index.html
+
 ---
 
 ## 📖 User Stories (Acceptance Criteria)
