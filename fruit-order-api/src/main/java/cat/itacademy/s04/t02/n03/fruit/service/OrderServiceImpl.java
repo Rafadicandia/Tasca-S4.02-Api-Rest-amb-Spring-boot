@@ -1,5 +1,6 @@
 package cat.itacademy.s04.t02.n03.fruit.service;
 
+import cat.itacademy.s04.t02.n03.fruit.model.Order;
 import cat.itacademy.s04.t02.n03.fruit.model.OrderDTO;
 import cat.itacademy.s04.t02.n03.fruit.model.OrderResponseDTO;
 import cat.itacademy.s04.t02.n03.fruit.repository.OrderRepository;
@@ -12,12 +13,17 @@ import java.util.List;
 @Validated
 @AllArgsConstructor
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
 
     @Override
-    public OrderResponseDTO createOrder(OrderDTO order) {
-        return null;
+    public OrderResponseDTO createOrder(OrderDTO orderDTO) {
+
+        Order order = mapToEntity(orderDTO);
+
+        Order savedOrder = orderRepository.save(order);
+
+        return mapToResponseDTO(savedOrder);
     }
 
     @Override
@@ -38,5 +44,18 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void deleteOrder(String id) {
 
+    }
+
+    private Order mapToEntity(OrderDTO dto) {
+        return new Order(null, dto.clientName(), dto.deliveryDate(), dto.items());
+    }
+
+    private OrderResponseDTO mapToResponseDTO(Order entity) {
+        return new OrderResponseDTO(
+                entity.getId(),
+                entity.getClientName(),
+                entity.getDeliveryDate(),
+                entity.getItems()
+        );
     }
 }
