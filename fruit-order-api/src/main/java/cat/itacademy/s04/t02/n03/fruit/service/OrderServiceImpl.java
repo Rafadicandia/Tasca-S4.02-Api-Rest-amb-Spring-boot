@@ -2,10 +2,19 @@ package cat.itacademy.s04.t02.n03.fruit.service;
 
 import cat.itacademy.s04.t02.n03.fruit.model.OrderDTO;
 import cat.itacademy.s04.t02.n03.fruit.model.OrderResponseDTO;
+import cat.itacademy.s04.t02.n03.fruit.repository.OrderRepository;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
+@Validated
+@AllArgsConstructor
+@Service
 public class OrderServiceImpl implements OrderService{
+    private final OrderRepository orderRepository;
+
     @Override
     public OrderResponseDTO createOrder(OrderDTO order) {
         return null;
