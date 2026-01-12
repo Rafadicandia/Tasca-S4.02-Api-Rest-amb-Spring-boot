@@ -10,6 +10,7 @@ import java.util.List;
 
 public record OrderDTO(
         @NotBlank(message = "Name can't be blank")
+
         String clientName,
         @Future(message = "Delivery date must be issued for tomorrow or later")
         LocalDate deliveryDate,
