@@ -1,6 +1,10 @@
 package cat.itacademy.s04.t02.n03.fruit.service;
 
 import cat.itacademy.s04.t02.n03.fruit.model.Order;
+import cat.itacademy.s04.t02.n03.fruit.model.OrderDTO;
+import cat.itacademy.s04.t02.n03.fruit.model.OrderResponseDTO;
+
+import java.util.List;
 
 
 public interface OrderService {
