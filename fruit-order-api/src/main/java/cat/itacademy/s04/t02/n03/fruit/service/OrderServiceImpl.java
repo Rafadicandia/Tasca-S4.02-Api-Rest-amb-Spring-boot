@@ -25,11 +25,11 @@ public class OrderServiceImpl implements OrderService {
 
         Order savedOrder = orderRepository.save(order);
 
-        if (savedOrder == null){
+        if (savedOrder == null) {
             throw new RuntimeException("Failed to save order in Mongodb");
         }
 
-            return mapToResponseDTO(savedOrder);
+        return mapToResponseDTO(savedOrder);
     }
 
     @Override
@@ -50,9 +50,13 @@ public class OrderServiceImpl implements OrderService {
     public OrderResponseDTO updateOrder(String id, OrderDTO orderDTO) {
         return orderRepository.findById(id)
                 .map(existingOrder -> {
-                    Order toUpdate = mapToEntity(orderDTO);
-                    toUpdate.setId(id);
-                    return mapToResponseDTO(orderRepository.save(toUpdate));
+
+                    existingOrder.setClientName(orderDTO.clientName());
+                    existingOrder.setDeliveryDate(orderDTO.deliveryDate());
+                    existingOrder.setItems(orderDTO.items());
+
+                    Order saved = orderRepository.save(existingOrder);
+                    return mapToResponseDTO(saved);
                 })
                 .orElseThrow(() -> new OrderNotFoundException("Order not found with id: " + id));
     }
